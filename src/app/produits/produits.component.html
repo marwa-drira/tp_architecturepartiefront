@@ -30,6 +30,7 @@
             <tr>
                 <th>Code</th>
                 <th>Designation</th>
+                <th>Categorie</th>
                 <th>Prix</th>
                 <th colspan="2">Actions</th>
             </tr>
@@ -38,6 +39,7 @@
             <tr *ngFor="let p of produits">
                 <td> {{p.code}}</td>
                 <td> {{p.designation}}</td>
+                <td> {{p.categorie !== undefined && p.categorie !== null ? p.categorie.libelle : ''}}</td>
                 <td> {{p.prix}}</td>
                 <td>
                     <button class="btn btn-dark">

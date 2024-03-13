@@ -40,9 +40,9 @@ export class ProduitsComponent implements OnInit {
   }
   produitCourant = new Produit();
   produits: Array<Produit> = [
-    { id: 1, code: 'x12', designation: "Panier plastique", prix: 20 },
-    { id: 2, code: 'y4', designation: "table en bois", prix: 100 },
-    { id: 3, code: 'y10', designation: "salon en cuir", prix: 3000 }
+    { id: 1, code: 'x12', designation: "Panier plastique", categorie: null, prix: 20 },
+    { id: 2, code: 'y4', designation: "table en bois", categorie: null, prix: 100 },
+    { id: 3, code: 'y10', designation: "salon en cuir", categorie: null, prix: 3000 }
   ];
   supprimerProduit(p: Produit) {
     //Afficher une boite de dialogue pour confirmer la suppression

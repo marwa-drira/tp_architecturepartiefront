@@ -1,0 +1,32 @@
+{
+    "produits": [
+        {
+            "id": 1,
+            "code": "x12",
+            "designation": "Panier plastique",
+            "categorie": null,
+            "prix": 20
+        },
+        {
+            "id": 2,
+            "code": "y4",
+            "designation": "table en bois",
+            "categorie": null,
+            "prix": 100
+        },
+        {
+            "id": 3,
+            "code": "y10",
+            "designation": "salon en cuir",
+            "categorie": null,
+            "prix": 3000
+        },
+        {
+            "id": 4,
+            "code": "z45",
+            "designation": "Ordinateur",
+            "categorie": null,
+            "prix": 2500
+        }
+    ]
+}
