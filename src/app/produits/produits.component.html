@@ -28,11 +28,29 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Code</th>
-                <th>Designation</th>
-                <th>Categorie</th>
-                <th>Prix</th>
-                <th colspan="2">Actions</th>
+                <th>
+                    <div>Code</div>
+                    <div><input type="text" placeholder="Code"  [(ngModel)]="filter.code"/></div>
+                </th>
+                <th>
+                    <div>Designation</div>
+                    <div><input type="text" placeholder="Designation"  [(ngModel)]="filter.designation"/></div>
+                </th>
+                <th>
+                    <div>Categorie</div>
+                    <div><input type="text" placeholder="Code"  [(ngModel)]="filter.categorieId"/></div>
+                </th>
+                <th>
+                    <div>Prix</div>
+                    <div><input type="text" placeholder="Code"  [(ngModel)]="filter.prix"/></div>
+                </th>
+                <th colspan="2">
+                    <div>Actions</div>
+                    <button (click) ="consulterProduits(filter)" class="btn btn-primary">
+                        <i class="bi bi-search"></i>
+                       Chercher
+                       </button>
+                </th>
             </tr>
         </thead>
         <tbody>

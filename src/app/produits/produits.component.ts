@@ -18,12 +18,13 @@ export class ProduitsComponent implements OnInit {
     //Message affiché au moment de l'affichage du composant
     console.log("Initialisation du composant:.....");
     //charger les données
-    this.consulterProduits();
+    this.initFilter();
+    this.consulterProduits(this.filter);
   }
-  consulterProduits() {
+  consulterProduits(filter: object) {
     console.log("Récupérer la liste des produits");
     //Appeler la méthode 'getProduits' du service pour récupérer les données du JSON
-    this.produitsService.getProduits()
+    this.produitsService.getProduits(filter)
       .subscribe(
         {
           //En cas de succès
@@ -38,12 +39,26 @@ export class ProduitsComponent implements OnInit {
         }
       )
   }
+  filter = {
+    code: '',
+    designation: '',
+    prix: null,
+    categorieId: null
+  };
   produitCourant = new Produit();
   produits: Array<Produit> = [
     { id: 1, code: 'x12', designation: "Panier plastique", categorie: null, prix: 20 },
     { id: 2, code: 'y4', designation: "table en bois", categorie: null, prix: 100 },
     { id: 3, code: 'y10', designation: "salon en cuir", categorie: null, prix: 3000 }
   ];
+  initFilter() {
+    this.filter = {
+      code: '',
+      designation: '',
+      prix: null,
+      categorieId: null
+    };
+  }
   supprimerProduit(p: Produit) {
     //Afficher une boite de dialogue pour confirmer la suppression
     let reponse: boolean = confirm("Voulez vous supprimer le produit :" + p.designation + " ?");
