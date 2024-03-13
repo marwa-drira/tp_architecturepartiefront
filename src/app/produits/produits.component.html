@@ -3,10 +3,6 @@
     <form #produitForm="ngForm" (ngSubmit)="validerFormulaire(produitForm)">
         <table>
             <tr>
-                <td> Id: </td>
-                <td> <input id="id" name="id" type="text" [(ngModel)]="produitCourant.id" required /> </td>
-            </tr>
-            <tr>
                 <td> Code: </td>
                 <td> <input type="text" name="code" [(ngModel)]="produitCourant.code" /> </td>
             </tr>
@@ -32,7 +28,6 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th> Id </th>
                 <th>Code</th>
                 <th>Designation</th>
                 <th>Prix</th>
@@ -41,7 +36,6 @@
         </thead>
         <tbody>
             <tr *ngFor="let p of produits">
-                <td> {{p.id}}</td>
                 <td> {{p.code}}</td>
                 <td> {{p.designation}}</td>
                 <td> {{p.prix}}</td>
