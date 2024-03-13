@@ -4,5 +4,6 @@ export class Produit {
     code: string | undefined;
     designation: string | undefined;
     categorie: Categorie | undefined | null;
-    prix: number | undefined
+    categorie_id: number | undefined;
+    prix: number | undefined;
 }

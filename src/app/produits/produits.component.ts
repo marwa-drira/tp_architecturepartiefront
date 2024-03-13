@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Produit } from '../model/produit';
 import { NgForm } from '@angular/forms';
 import { ProduitsService } from '../services/produits.service';
+import { CategoriesService } from '../services/categories.service';
+import { Categorie } from '../model/categorie';
 
 @Component({
   selector: 'app-produits',
@@ -11,7 +13,7 @@ import { ProduitsService } from '../services/produits.service';
 
 export class ProduitsComponent implements OnInit {
 
-  constructor(private produitsService: ProduitsService) {
+  constructor(private produitsService: ProduitsService, private categoriesService: CategoriesService) {
   }
 
   ngOnInit(): void {
@@ -20,6 +22,7 @@ export class ProduitsComponent implements OnInit {
     //charger les données
     this.initFilter();
     this.consulterProduits(this.filter);
+    this.consulterCategorie();
   }
   consulterProduits(filter: object) {
     console.log("Récupérer la liste des produits");
@@ -39,6 +42,24 @@ export class ProduitsComponent implements OnInit {
         }
       )
   }
+  consulterCategorie() {
+    console.log("Récupérer la liste des categories");
+    //Appeler la méthode 'getProduits' du service pour récupérer les données du JSON
+    this.categoriesService.getCategories()
+      .subscribe(
+        {
+          //En cas de succès
+          next: data => {
+            console.log("Succès GET");
+            this.categories = data;
+          },
+          //En cas d'erreur
+          error: err => {
+            console.log("Erreur GET");
+          }
+        }
+      )
+  }
   filter = {
     code: '',
     designation: '',
@@ -46,11 +67,8 @@ export class ProduitsComponent implements OnInit {
     categorieId: null
   };
   produitCourant = new Produit();
-  produits: Array<Produit> = [
-    { id: 1, code: 'x12', designation: "Panier plastique", categorie: null, prix: 20 },
-    { id: 2, code: 'y4', designation: "table en bois", categorie: null, prix: 100 },
-    { id: 3, code: 'y10', designation: "salon en cuir", categorie: null, prix: 3000 }
-  ];
+  produits: Array<Produit> = [];
+  categories: Array<Categorie> = [];
   initFilter() {
     this.filter = {
       code: '',

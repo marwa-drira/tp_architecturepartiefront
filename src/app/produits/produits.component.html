@@ -11,6 +11,13 @@
                 <td> <input type="text" name="designation" [(ngModel)]="produitCourant.designation" /> </td>
             </tr>
             <tr>
+                <td> Categorie: </td>
+                <td><select matNativeControl [(ngModel)]="produitCourant.categorie_id" name="categorie_id">
+                    <option value="" selected></option>
+                      <option *ngFor="let categorie of categories" [value]="categorie.id">{{categorie.libelle}}</option>
+                  </select></td>
+            </tr>
+            <tr>
                 <td> Prix: </td>
                 <td> <input type="text" name="prix" [(ngModel)]="produitCourant.prix" /> </td>
             </tr>
