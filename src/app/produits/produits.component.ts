@@ -22,7 +22,7 @@ export class ProduitsComponent implements OnInit {
     //charger les données
     this.initFilter();
     this.consulterProduits(this.filter);
-    this.consulterCategorie();
+    this.consulterCategorie(this.filter);
   }
   consulterProduits(filter: object) {
     console.log("Récupérer la liste des produits");
@@ -42,10 +42,10 @@ export class ProduitsComponent implements OnInit {
         }
       )
   }
-  consulterCategorie() {
+  consulterCategorie(filter: object) {
     console.log("Récupérer la liste des categories");
     //Appeler la méthode 'getProduits' du service pour récupérer les données du JSON
-    this.categoriesService.getCategories()
+    this.categoriesService.getCategories(filter)
       .subscribe(
         {
           //En cas de succès

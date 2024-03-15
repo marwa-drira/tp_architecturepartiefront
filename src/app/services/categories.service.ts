@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Produit } from '../model/produit';
+import { Categorie } from '../model/categorie';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProduitsService {
-  // Url du service web de gestion de produits
+export class CategoriesService {
+  // Url du service web de gestion de Categories
   // commune pour toutes les méthodes
-  urlHote = "http://localhost:9999/produits/";
+  urlHote = "http://localhost:9999/categories/";
   constructor(private http: HttpClient) { }
-  getProduits(filter: object): Observable<Array<Produit>> {
+  getCategories(filter: object): Observable<Array<Categorie>> {
     let entries = Object.entries(filter);
     let hasFilter = false;
     let url = this.urlHote;
@@ -22,15 +22,15 @@ export class ProduitsService {
         url += '?' + key + '=' + val;
       }
     });
-    return this.http.get<Array<Produit>>(url);
+    return this.http.get<Array<Categorie>>(url);
   }
-  deleteProduit(idP: number | undefined) {
-    return this.http.delete(this.urlHote + idP);
+  deleteCategorie(idC: number | undefined) {
+    return this.http.delete(this.urlHote + idC);
   }
-  addProduit(nouveau: Produit) {
-    return this.http.post<Array<Produit>>(this.urlHote, nouveau);
+  addCategorie(nouveau: Categorie) {
+    return this.http.post<Array<Categorie>>(this.urlHote, nouveau);
   }
-  updateProduit(idP: number | undefined, nouveau: Produit) {
+  updateCategorie(idP: number | undefined, nouveau: Categorie) {
     return this.http.put(this.urlHote + idP, nouveau);
   }
 }
